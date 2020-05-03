@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Table of Measurments";
+}
+
+
+<h1>@ViewBag.Title</h1>
+
+<a asp-controller="measurment" asp-action="add">Add Measurment</a>
+<table border="1" cellpadding="2" cellspacing="2">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var measurment in ViewBag.measurments)
+        {
+            <tr>
+                <td>@measurment.Id</td>
+                <td>@measurment.Name</td>
+                <td>@measurment.Price</td>
+                <td>@measurment.Quantity</td>
+                <td>@measurment.Status</td>
+                <td>
+                    <a asp-controller="measurment" asp-action="edit" asp-route-id="@measurment.Id" >Edit</a> 
+                    or 
+                    <a asp-controller="measurment" asp-action="delete" asp-route-id="@measurment.Id" onclick="return confirm('Are you sure?')">Delete</a>
+                </td>
+            </tr>
+
+        }
+</table>
+
+
+
+
+<p>@ViewBag.Description</p>
